@@ -26,6 +26,12 @@ class _ListItemState extends State<ListItem> {
       child: GestureDetector(
        
         child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.blue),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: Colors.white,
+          ),
           height: 65,
           child: Card(
             elevation: 10,
