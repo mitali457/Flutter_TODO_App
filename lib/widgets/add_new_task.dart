@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import 'package:to_do_list/models/taskmodel.dart';
 
 import '../providers/task.dart';
 
@@ -25,8 +26,7 @@ class AddNewTask extends StatefulWidget {
 
 class _AddNewTaskState extends State<AddNewTask> {
   Task task;
-  TimeOfDay _selectedTime;
-  DateTime _selectedDate;
+ 
   String _inputDescription;
   final _formKey = GlobalKey<FormState>();
 
@@ -37,9 +37,7 @@ class _AddNewTaskState extends State<AddNewTask> {
   void _validateForm() {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      if (_selectedDate == null && _selectedTime != null) {
-        _selectedDate = DateTime.now();
-      }
+      
       if (!widget.isEditMode) {
         Provider.of<TaskProvider>(context, listen: false).createNewTask(
           Task(

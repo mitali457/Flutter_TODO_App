@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:to_do_list/models/taskmodel.dart';
 
 import '../providers/task.dart';
 import '../widgets/add_new_task.dart';
@@ -44,14 +45,14 @@ class _ListItemState extends State<ListItem> {
                   children: <Widget>[
                     
                     ItemText(
-                      widget.task.isDone,
+                     
                       widget.task.description,
                      
                     ),
                   ],
                 ),
                 SizedBox(width:120),
-                if (!widget.task.isDone)
+                
                   IconButton(
                     icon: Icon(Icons.edit),
                     onPressed: () {

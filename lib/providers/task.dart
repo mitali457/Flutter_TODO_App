@@ -1,22 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:to_do_list/models/taskmodel.dart';
 
-//Everything the user adds to the list is a task.
-//Task provider is self explanatory and its job is being the provider for the project.
 
-class Task {
-  final String id;
-  String description;
- 
-  bool isDone;
 
-  Task({
-    @required this.id,
-    @required this.description,
-   
-    this.isDone = false,
-  });
-}
+
 
 class TaskProvider with ChangeNotifier {
   List<Task> get itemsList {
