@@ -22,58 +22,66 @@ class _ListItemState extends State<ListItem> {
   Widget build(BuildContext context) {
    
 
-    return Container(
-      
-      child: GestureDetector(
-       
-        child: Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.blue),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              color: Colors.white,
-          ),
-          height: 65,
-          child: Card(
-            elevation: 10,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        
+        
+        child: GestureDetector(
+         
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(color:Color(0xFF26734d)),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                color: Colors.white,
+                                  boxShadow: [new BoxShadow(
+              color: Color(0xFF26734d),
+              blurRadius: 8.0,
+            ),]
+            ),
+            height: 65,
+            child: Card(
+              elevation: 10,
+              child: SingleChildScrollView(
+                scrollDirection:Axis.horizontal ,
+                            child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
-                    
-                    ItemText(
-                     
-                      widget.task.description,
-                     
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ItemText(
+                       
+                        widget.task.description,
+                       
+                      ),
                     ),
+                   
+                    SizedBox(width:60),
+                      IconButton(
+                        icon: Icon(Icons.edit),
+                        onPressed: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (_) => AddNewTask(
+                              id: widget.task.id,
+                              isEditMode: true,
+                            ),
+                          );
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.delete),
+                        onPressed: () {
+                      Provider.of<TaskProvider>(context, listen: false)
+                .removeTask(widget.task.id);
+                        },
+                      ),
+                      
+
                   ],
                 ),
-                SizedBox(width:120),
-                
-                  IconButton(
-                    icon: Icon(Icons.edit),
-                    onPressed: () {
-                      showModalBottomSheet(
-                        context: context,
-                        builder: (_) => AddNewTask(
-                          id: widget.task.id,
-                          isEditMode: true,
-                        ),
-                      );
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.delete),
-                    onPressed: () {
-                      Provider.of<TaskProvider>(context, listen: false)
-            .removeTask(widget.task.id);
-                    },
-                  ),
-
-              ],
+              ),
             ),
           ),
         ),

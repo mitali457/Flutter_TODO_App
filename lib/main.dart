@@ -13,9 +13,11 @@ class ToDoListApp extends StatelessWidget {
       create: (_) => TaskProvider(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        
         theme: ThemeData(
-           //primarySwatch:const Color(0x26734d),
-          //primaryColor:const Color(0x26734d),
+          
+           accentColor: Color (0xFF26734d),
+          primaryColor: Color (0xFF26734d),
           fontFamily: 'Poppins',
           
          
