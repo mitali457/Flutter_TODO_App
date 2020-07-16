@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'package:to_do_list/models/taskmodel.dart';
@@ -79,8 +80,13 @@ class _AddNewTaskState extends State<AddNewTask> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text('Title', style:TextStyle(fontSize:20,color:Colors.blueGrey,fontFamily:'Popines',fontWeight:FontWeight.bold)),
+            Text('Title', 
+            overflow: TextOverflow.clip,textAlign: TextAlign.justify,
+            maxLines: 40, 
+             
+            style:TextStyle(fontSize:20,color:Colors.blueGrey,fontFamily:'Popines',fontWeight:FontWeight.bold)),
             TextFormField(
+             autocorrect: true,
               initialValue:
                   _inputDescription == null ? null : _inputDescription,
               decoration: InputDecoration(
@@ -95,6 +101,7 @@ class _AddNewTaskState extends State<AddNewTask> {
               onSaved: (value) {
                 _inputDescription = value;
               },
+              
             ),
            
             Padding(
@@ -105,7 +112,7 @@ class _AddNewTaskState extends State<AddNewTask> {
                   child: Text(
                     !widget.isEditMode ? 'ADD TASK' : 'EDIT TASK',
                     style: TextStyle(
-                        color: Theme.of(context).accentColor,
+                        color: Theme.of(context).primaryColor,
                         fontFamily: 'Poppins',
                         fontSize: 18,
                         fontWeight: FontWeight.bold),

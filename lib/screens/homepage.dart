@@ -13,11 +13,13 @@ class Homepage extends StatelessWidget {
        backgroundColor: Colors.white,
       appBar: AppBar(
          shape: CustomShapeBorder(),
-        title: Text('TODO_App'),
+        title: Text('Flutter TODOApp',
+         style:TextStyle(fontSize:25,color:Colors.white,fontFamily:'Popines',fontWeight:FontWeight.bold)
+        ),
         centerTitle: true,
         actions: <Widget>[
           // IconButton(
-          //   icon: Icon(Icons.add),
+          //   icon: Icon(Icons.arrow_forward),
           //   onPressed: () {
           //     showModalBottomSheet(
           //       context: context,
@@ -25,6 +27,7 @@ class Homepage extends StatelessWidget {
           //     );
           //   },
           // ),
+
         ],
       ),
       body: List(),

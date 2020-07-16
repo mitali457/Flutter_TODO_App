@@ -29,19 +29,17 @@ class List extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(left:40),
+                      padding: const EdgeInsets.only(left:40,bottom: 20),
                       child: Container(
                         height: constraints.maxHeight * 0.4,
                         child: Image.asset('assets/images/waiting1.png',
                             fit: BoxFit.cover),
                       ),
                     ),
-                    SizedBox(
-                      height: 30,
-                    ),
+                    
                     Text(
-                      'No tasks added yet...',
-                      style: TextStyle(fontSize:20,color:Colors.blueGrey,fontFamily:'Popines',fontWeight:FontWeight.bold)
+                      'No tasks added yet....',
+                      style: TextStyle(fontSize:23,color:Theme.of(context).primaryColor,fontFamily:'Popines',fontWeight:FontWeight.bold)
                     ),
                   ],
                 ),

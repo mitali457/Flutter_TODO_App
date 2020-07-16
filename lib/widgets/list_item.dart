@@ -23,7 +23,7 @@ class _ListItemState extends State<ListItem> {
    
 
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(12.0),
       child: Container(
         
         
@@ -31,57 +31,67 @@ class _ListItemState extends State<ListItem> {
          
           child: Container(
             decoration: BoxDecoration(
-              border: Border.all(color:Color(0xFF26734d)),
+              border: Border.all(color:Theme.of(context).primaryColor),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
                                 color: Colors.white,
                                   boxShadow: [new BoxShadow(
-              color: Color(0xFF26734d),
-              blurRadius: 8.0,
+              color: Theme.of(context).primaryColor,
+              blurRadius: 2.0,
             ),]
             ),
             height: 65,
+            width: MediaQuery.of(context).size.width,
             child: Card(
-              elevation: 10,
-              child: SingleChildScrollView(
-                scrollDirection:Axis.horizontal ,
-                            child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+              elevation: 0,
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: ItemText(
-                       
+                      child: Container(
+                        width: 150,
+                        //height: 100,
+                        child: ItemText(
+                  
                         widget.task.description,
-                       
-                      ),
+                        
+                         
+                        ),
+                      )
+                      ,
                     ),
                    
-                    SizedBox(width:60),
-                      IconButton(
-                        icon: Icon(Icons.edit),
-                        onPressed: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (_) => AddNewTask(
-                              id: widget.task.id,
-                              isEditMode: true,
-                            ),
-                          );
-                        },
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.delete),
+                    //SizedBox(width:160),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.edit,color: Theme.of(context).primaryColor,),
+                            onPressed: () {
+                              showModalBottomSheet(
+              context: context,
+              builder: (_) => AddNewTask(
+                id: widget.task.id,
+                isEditMode: true,
+              ),
+                              );
+                            },
+                          ),
+                          IconButton(
+                        icon: Icon(Icons.delete,color: Theme.of(context).primaryColor,),
                         onPressed: () {
                       Provider.of<TaskProvider>(context, listen: false)
                 .removeTask(widget.task.id);
                         },
                       ),
                       
+                        ],
+                      ),
+                      
 
                   ],
                 ),
-              ),
             ),
           ),
         ),
